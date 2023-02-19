@@ -1,14 +1,21 @@
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import ImgCapa from '../../assets/ImgCapa.svg'
+import { Card } from '../../components/Card'
 import {
+  BenefitLine,
   Benefits,
-  ConatinerImgBenefits,
   ContainerBenefits,
+  ContainerCards,
   ContainerHome,
+  ContainerImgBenefitsCart,
+  ContainerImgBenefitsCoffee,
+  ContainerImgBenefitsPackage,
+  ContainerImgBenefitsTimer,
   Infos,
   PresentationCoffe,
   SectionIntro,
+  SectionProducts,
 } from './styles'
-import ImgCapa from '../../assets/ImgCapa.svg'
-import { ShoppingCart } from 'phosphor-react'
 
 export function Home() {
   return (
@@ -24,17 +31,32 @@ export function Home() {
           </Infos>
           <ContainerBenefits>
             <Benefits>
-              <div>
-                <ConatinerImgBenefits>
+              <BenefitLine>
+                <ContainerImgBenefitsCart>
                   <ShoppingCart size={16} weight="fill" />
-                </ConatinerImgBenefits>
+                </ContainerImgBenefitsCart>
                 <p>Compra simples e segura</p>
-              </div>
-              <span>Imagem, Comrpa simples e segura</span>
+              </BenefitLine>
+              <BenefitLine>
+                <ContainerImgBenefitsTimer>
+                  <Timer size={16} weight="fill" />
+                </ContainerImgBenefitsTimer>
+                <p>Entrega rápida e rastreada</p>
+              </BenefitLine>
             </Benefits>
             <Benefits>
-              <span>Imagem, Comrpa simples e segura</span>
-              <span>Imagem, Comrpa simples e segura</span>
+              <BenefitLine>
+                <ContainerImgBenefitsPackage>
+                  <Package size={16} weight="fill" />
+                </ContainerImgBenefitsPackage>
+                <p>Embalagem mantém o café intacto</p>
+              </BenefitLine>
+              <BenefitLine>
+                <ContainerImgBenefitsCoffee>
+                  <Coffee size={16} weight="fill" />
+                </ContainerImgBenefitsCoffee>
+                <p>o café chega fresquinho até você</p>
+              </BenefitLine>
             </Benefits>
           </ContainerBenefits>
         </PresentationCoffe>
@@ -42,6 +64,31 @@ export function Home() {
           <img src={ImgCapa} alt="" />
         </div>
       </SectionIntro>
+      <SectionProducts>
+        <h2 className="text_coffe">Nossos cafés</h2>
+        <ContainerCards>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </ContainerCards>
+        <ContainerCards>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </ContainerCards>
+        <ContainerCards>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </ContainerCards>
+        <ContainerCards>
+          <Card />
+          <Card />
+        </ContainerCards>
+      </SectionProducts>
     </ContainerHome>
   )
 }
