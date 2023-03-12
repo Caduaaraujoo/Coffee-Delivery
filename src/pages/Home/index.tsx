@@ -1,6 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { useContext, useEffect, useState } from 'react'
 import ImgCapa from '../../assets/ImgCapa.svg'
 import { Card } from '../../components/Card'
+import { ProductsContext } from '../../context/ProductsContext'
 import {
   BenefitLine,
   Benefits,
@@ -18,6 +22,17 @@ import {
 } from './styles'
 
 export function Home() {
+  const { products, setProducts } = useContext(ProductsContext)
+  useEffect(() => {
+    fetch('http://localhost:3000/produtos')
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        setProducts(json)
+      })
+  }, [])
+
   return (
     <ContainerHome>
       <SectionIntro>
@@ -66,28 +81,21 @@ export function Home() {
       </SectionIntro>
       <SectionProducts>
         <h2 className="text_coffe">Nossos cafés</h2>
-        <ContainerCards>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </ContainerCards>
-        <ContainerCards>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </ContainerCards>
-        <ContainerCards>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </ContainerCards>
-        <ContainerCards>
-          <Card />
-          <Card />
-        </ContainerCards>
+        {products.length > 1 && (
+          <ContainerCards>
+            {products.map((product: any, index: number) => (
+              <Card
+                key={product.id}
+                title={product.type[0]}
+                name={product.name}
+                description={product.description}
+                value={product.value}
+                amount={product.amount}
+                index={index}
+              />
+            ))}
+          </ContainerCards>
+        )}
       </SectionProducts>
     </ContainerHome>
   )

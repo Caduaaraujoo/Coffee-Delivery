@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const ContainerHome = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   height: 32.9rem;
   padding: 100px 160px;
@@ -92,9 +91,10 @@ export const SectionProducts = styled.section`
 `
 
 export const ContainerCards = styled.div`
+  flex-wrap: wrap;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  gap: 32px;
+  gap: 2rem;
   margin-bottom: 40px;
 `
