@@ -35,6 +35,7 @@ export function Card({
   value,
   amount,
   index,
+  id
 }: Coffe) {
   const [img, setImg] = useState()
   useEffect(() => {
@@ -74,13 +75,13 @@ export function Card({
             <Minus
               size={14}
               weight="bold"
-              onClick={() => handleAmountCoffeeMinus(index)}
+              onClick={() => handleAmountCoffeeMinus(id)}
             />
             <span>{amount}</span>
             <Plus
               size={14}
               weight="bold"
-              onClick={() => handleAmountCoffeePlus(index)}
+              onClick={() => handleAmountCoffeePlus(id)}
             />
           </AmountCoffees>
           <ContainerShoppinhCart>

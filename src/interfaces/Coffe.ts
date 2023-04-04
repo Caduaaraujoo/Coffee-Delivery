@@ -7,4 +7,5 @@ export interface Coffe {
     value: string,
     amount: number,
     index: number,
+    id: number
 }

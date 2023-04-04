@@ -2,7 +2,7 @@
 /* eslint-disable eqeqeq */
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
-import ImgCapa from '../../assets/ImgCapa.svg'
+import ImgCapa from '../../assets/Imagem.svg'
 import { Card } from '../../components/Card'
 import { ProductsContext } from '../../context/ProductsContext'
 import {
@@ -92,6 +92,7 @@ export function Home() {
                 value={product.value}
                 amount={product.amount}
                 index={index}
+                id={product.id}
               />
             ))}
           </ContainerCards>

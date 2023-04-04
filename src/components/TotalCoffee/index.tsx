@@ -14,48 +14,36 @@ import {
 } from './styles'
 import Americano from '../../assets/Americano.svg'
 import { Minus, Plus, Trash } from 'phosphor-react'
+import {ProductsContext} from '../../context/ProductsContext'
+import { useContext } from 'react'
+
 export function TotalCoffee() {
+    const {productsCart, handleAmountCoffeeMinus, handleAmountCoffeePlus} = useContext(ProductsContext)
     return (
         <Container>
             <h2>Cafés selecionadas</h2>
             <ContainerRequests>
                 <ContainerCoffee>
-                    <ContainerCoffeeSelected>
-                        <img src={Americano} alt='' />
-                        <CoffeeAmount>
-                            <p>Expresso Tradicional</p>
-                            <ContainerAmountAcions>
-                                <ContainerCoffeAmountFunctions>
-                                    <Minus size={14} weight="bold" color='#8047F8' />
-                                    <span>1</span>
-                                    <Plus size={14} weight="bold" color='#8047F8' />
-                                </ContainerCoffeAmountFunctions>
-                                <ButtonDeleteCoffee>
-                                    <Trash size={16} color='#8047F8' />
-                                    <span>Remover</span>
-                                </ButtonDeleteCoffee>
-                            </ContainerAmountAcions>
-                        </CoffeeAmount>
-                        <span>R$ 9,90</span>
-                    </ContainerCoffeeSelected>
-                    <ContainerCoffeeSelected>
-                        <img src={Americano} alt='' />
-                        <CoffeeAmount>
-                            <p>Expresso Tradicional</p>
-                            <ContainerAmountAcions>
-                                <ContainerCoffeAmountFunctions>
-                                    <Minus size={14} weight="bold" color='#8047F8' />
-                                    <span>1</span>
-                                    <Plus size={14} weight="bold" color='#8047F8' />
-                                </ContainerCoffeAmountFunctions>
-                                <ButtonDeleteCoffee>
-                                    <Trash size={16} color='#8047F8' />
-                                    <span>Remover</span>
-                                </ButtonDeleteCoffee>
-                            </ContainerAmountAcions>
-                        </CoffeeAmount>
-                        <span>R$ 9,90</span>
-                    </ContainerCoffeeSelected>
+                    {productsCart.map((product: any, index: number) => (
+                        <ContainerCoffeeSelected key={product.id}>
+                            <img src={Americano} alt='' />
+                            <CoffeeAmount>
+                                <p>{product.name}</p>
+                                <ContainerAmountAcions>
+                                    <ContainerCoffeAmountFunctions>
+                                        <Minus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountCoffeeMinus(product.id)}/>
+                                        <span>{product.amount}</span>
+                                        <Plus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountCoffeePlus(product.id)}/>
+                                    </ContainerCoffeAmountFunctions>
+                                    <ButtonDeleteCoffee>
+                                        <Trash size={16} color='#8047F8' />
+                                        <span>Remover</span>
+                                    </ButtonDeleteCoffee>
+                                </ContainerAmountAcions>
+                            </CoffeeAmount>
+                            <span>R$ 9,90</span>
+                        </ContainerCoffeeSelected>
+                    ))}
                 </ContainerCoffee>
                 <ContainerCheckoutProducts>
                     <ValueLine>
