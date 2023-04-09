@@ -15,11 +15,34 @@ import {
 import Americano from '../../assets/Americano.svg'
 import { Minus, Plus, Trash } from 'phosphor-react'
 import {ProductsContext} from '../../context/ProductsContext'
+import {ImagemContext} from '../../context/ImagemContext'
 import { useContext, useEffect, useState } from 'react'
 import {Coffe} from '../../interfaces/Coffe'
 
+interface PriceCoffee {
+    priceCurrent: number,
+    priceCoffeesAtual: {
+        value: number
+    }
+}
+
 export function TotalCoffee() {
     const {productsCart, handleAmountPlusPay, handleAmountMinusPay, handleRemoveCoffee} = useContext(ProductsContext)
+    const [totalPriceCoffeeCart, setTotalPriceCoffeCart] = useState<number>()
+    const [priceDelivery, setPriceDeleviry] = useState<number>(3.50)
+    const [totalPricePurchase, setTotalPricePurchase] = useState<number>()
+    const {imagens} = useContext(ImagemContext)
+    const [imagemCart, setImagemCart] = useState()
+
+
+    useEffect(() => {
+        const totalProductsCart = productsCart.reduce(function(priceCurrent: PriceCoffee, priceCoffeesAtual: PriceCoffee){
+            return priceCurrent + priceCoffeesAtual.value
+        }, 0)
+        const totalPurchase = totalProductsCart + priceDelivery
+        setTotalPricePurchase(totalPurchase)
+        setTotalPriceCoffeCart(totalProductsCart)
+    }, [productsCart])
 
     return (
         <Container>
@@ -28,7 +51,7 @@ export function TotalCoffee() {
                 <ContainerCoffee>
                     {productsCart.map((product: Coffe) => (
                         <ContainerCoffeeSelected key={product.id}>
-                            <img src={Americano} alt='' />
+                            <img src={product.img} alt='' />
                             <CoffeeAmount>
                                 <p>{product.name}</p>
                                 <ContainerAmountAcions>
@@ -50,15 +73,15 @@ export function TotalCoffee() {
                 <ContainerCheckoutProducts>
                     <ValueLine>
                         <p>Total de itens</p>
-                        <span>R$ 29,70</span>
+                        <span>R$ {totalPriceCoffeeCart?.toFixed(2)}</span>
                     </ValueLine>
                     <ValueLine>
                         <p>Total da Entrega</p>
-                        <span>R$ 3,50</span>
+                        <span>R$ {priceDelivery.toFixed(2)}</span>
                     </ValueLine>
                     <ValueLine>
                         <h3>Total</h3>
-                        <h3>R$ 33,20</h3>
+                        <h3>R$ {totalPricePurchase?.toFixed(2)}</h3>
                     </ValueLine>
                     <ButtonConfirmProduct><h3>Confirmar Pedido</h3></ButtonConfirmProduct>
                 </ContainerCheckoutProducts>

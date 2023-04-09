@@ -3,20 +3,7 @@
 /* eslint-disable no-unused-expressions */
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
-import Americano from '../../assets/Americano.svg'
-import Arabe from '../../assets/Arabe.svg'
-import CafeComLeite from '../../assets/CafeComLeite.svg'
-import CafeGelado from '../../assets/CafeGelado.svg'
-import Capuccino from '../../assets/Capuccino.svg'
-import ChocolateQuente from '../../assets/ChocolateQuente.svg'
-import Cubano from '../../assets/Cubano.svg'
-import Expresso from '../../assets/Expresso.svg'
-import ExpressoCremoso from '../../assets/ExpressoCremoso.svg'
-import Havaiano from '../../assets/Havaiano.svg'
-import Irlandes from '../../assets/Irlandes.svg'
-import Latte from '../../assets/Latte.svg'
-import Macchiato from '../../assets/Macchiato.svg'
-import Mochaccino from '../../assets/Mochaccino.svg'
+
 import { Coffe } from '../../interfaces/Coffe'
 import {
   AmountCoffees,
@@ -27,6 +14,7 @@ import {
   ImgCoffee,
 } from './styles'
 import {ProductsContext} from '../../context/ProductsContext'
+import {ImagemContext} from '../../context/ImagemContext'
 
 export function Card({
   title,
@@ -35,33 +23,20 @@ export function Card({
   amount,
   index,
   id,
-  value
+  value,
+  imgId
 }: Coffe) {
   const [img, setImg] = useState()
   const {handleAmountPlus, handleAmountMinus, handleCartProducts} = useContext(ProductsContext)
+  const {imagens} = useContext(ImagemContext)
 
   useEffect(() => {
-    const imagem = imagens[index].type
-    setImg(imagem)
+    const imgCoffee = imagens.find((img: any) => img.id == imgId)
+    setImg(imgCoffee.imagem.type)
   }, [])
 
 
-  const imagens = [
-    <Expresso />,
-    <Americano />,
-    <ExpressoCremoso />,
-    <CafeGelado />,
-    <CafeComLeite />,
-    <Latte />,
-    <Capuccino />,
-    <Macchiato />,
-    <Mochaccino />,
-    <ChocolateQuente />,
-    <Cubano />,
-    <Havaiano />,
-    <Arabe />,
-    <Irlandes />,
-  ]
+
 
   return (
     <ContainerCard>

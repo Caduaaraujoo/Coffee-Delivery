@@ -84,6 +84,7 @@ export function Home() {
                 index={index}
                 id={product.id}
                 value={product.value}
+                imgId={product.idImg}
               />
             ))}
           </ContainerCards>

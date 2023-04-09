@@ -8,10 +8,12 @@ export interface Coffe {
     index: number,
     id: number,
     value: number
+    imgId: number
+    img?: HTMLImageElement
 }
 
 export interface BasicInfoCoffe {
     id: number,
-    prince: number,
+    price: number,
     amount: number
 }

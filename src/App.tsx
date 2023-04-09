@@ -4,15 +4,19 @@ import { Router } from './Router'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 import { ProductsContextProvider } from './context/ProductsContext'
+import { ImagemContextProvider } from './context/ImagemContext'
+
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
       <BrowserRouter>
-        <ProductsContextProvider>
-          <Router />
-        </ProductsContextProvider>
+        <ImagemContextProvider>
+          <ProductsContextProvider>
+            <Router />
+          </ProductsContextProvider>
+        </ImagemContextProvider>
       </BrowserRouter>
     </ThemeProvider>
   )
