@@ -1,12 +1,25 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { NavLink } from 'react-router-dom'
 import Logo from '../../assets/Logo.svg'
 import { ActionsContainer, Cart, Location, NavBarContainer } from './styles'
-import { ProductsContext } from '../../context/ProductsContext'
-import { useContext } from 'react'
-import {NavLink} from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import {ProductsContext} from '../../context/ProductsContext'
 
 export function Header() {
-  const { amountProductsCart } = useContext(ProductsContext)
+  const [amountCoffeCart, setAmountCoffeCart] = useState<number>(0)
+  const {productsCart} = useContext(ProductsContext)
+    
+  useEffect(() => {
+    if(productsCart.lenght == 1){
+      setAmountCoffeCart(productsCart[0].amount)
+    } else {
+      const totalCoffees = productsCart.reduce(function(soma: number, currentCoffee: number){
+          return soma + currentCoffee.amount
+      }, 0)
+      setAmountCoffeCart(totalCoffees)
+
+    }
+  }, [productsCart])
   return (
     <NavBarContainer>
       <NavLink to="/" title='Home'>
@@ -21,7 +34,7 @@ export function Header() {
           <NavLink to="/checkout" title='Checkout'>
             <ShoppingCart weight="fill" size={22} />
           </NavLink>
-          {amountProductsCart >= 1 && <span>{amountProductsCart}</span>}
+          {amountCoffeCart >=1 && <span>{amountCoffeCart}</span>}
         </Cart>
       </ActionsContainer>
     </NavBarContainer>

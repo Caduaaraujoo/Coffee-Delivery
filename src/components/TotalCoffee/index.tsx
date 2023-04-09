@@ -15,33 +15,35 @@ import {
 import Americano from '../../assets/Americano.svg'
 import { Minus, Plus, Trash } from 'phosphor-react'
 import {ProductsContext} from '../../context/ProductsContext'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import {Coffe} from '../../interfaces/Coffe'
 
 export function TotalCoffee() {
-    const {productsCart, handleAmountCoffeeMinus, handleAmountCoffeePlus} = useContext(ProductsContext)
+    const {productsCart, handleAmountPlusPay, handleAmountMinusPay, handleRemoveCoffee} = useContext(ProductsContext)
+
     return (
         <Container>
             <h2>Cafés selecionadas</h2>
             <ContainerRequests>
                 <ContainerCoffee>
-                    {productsCart.map((product: any, index: number) => (
+                    {productsCart.map((product: Coffe) => (
                         <ContainerCoffeeSelected key={product.id}>
                             <img src={Americano} alt='' />
                             <CoffeeAmount>
                                 <p>{product.name}</p>
                                 <ContainerAmountAcions>
                                     <ContainerCoffeAmountFunctions>
-                                        <Minus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountCoffeeMinus(product.id)}/>
+                                        <Minus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountMinusPay(product.id)}/>
                                         <span>{product.amount}</span>
-                                        <Plus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountCoffeePlus(product.id)}/>
+                                        <Plus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountPlusPay(product.id)}/>
                                     </ContainerCoffeAmountFunctions>
-                                    <ButtonDeleteCoffee>
+                                    <ButtonDeleteCoffee onClick={() => handleRemoveCoffee(product.id)}>
                                         <Trash size={16} color='#8047F8' />
                                         <span>Remover</span>
                                     </ButtonDeleteCoffee>
                                 </ContainerAmountAcions>
                             </CoffeeAmount>
-                            <span>R$ 9,90</span>
+                            <span>{product.value}</span>
                         </ContainerCoffeeSelected>
                     ))}
                 </ContainerCoffee>

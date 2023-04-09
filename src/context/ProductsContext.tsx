@@ -1,56 +1,125 @@
 /* eslint-disable prettier/prettier */
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 
 export const ProductsContext = createContext({} as any)
+import { Coffe, BasicInfoCoffe } from '../interfaces/Coffe'
 
 interface ProductsContextProviderProps {
     children: ReactNode
 }
 
 export function ProductsContextProvider({ children }: ProductsContextProviderProps) {
-    const [products, setProducts] = useState([{}])
-    const [amountProductsCart, setAmountProductsCart] = useState<number>(0)
-    const [productsCart, setProductsCart] = useState([])
+    const [productsEventsAmount, setProductsEventsAmount] = useState<Coffe[]>([])
+    const [productsCart, setProductsCart] = useState<Coffe[]>([])
+    const arrayProductsOriginal: BasicInfoCoffe[] = []
+    const [basicInfoCoffeOriginal, setBasicIndoCoffeOriginal] = useState<BasicInfoCoffe[]>()
 
-    function handleAmountCoffeePlus(id: number) {
-        const amountCoffeePlus = products.find((product) => product.id == id)
-        amountCoffeePlus.amount++
-        const indexCoffeplus = products.indexOf(amountCoffeePlus)
-        setProducts((state) => {
-            const coffes = state.slice(0)
-            coffes.splice(indexCoffeplus, 1, amountCoffeePlus)
-            return coffes
-        })
+
+    useEffect(() => {
+        fetch('http://localhost:3000/produtos')
+            .then((response) => {
+                return response.json()
+            })
+            .then((json) => {
+                handleTratamentJson(json)
+                setProductsEventsAmount(json)
+            })
+    }, [])
+
+    function handleTratamentJson(json: any) {
+        const repeatArray = arrayProductsOriginal.find(array => array.id == json[0].id)
+
+        if (!repeatArray) {
+            for (let i = 0; i < json.length; i++) {
+                arrayProductsOriginal.push({ id: json[i].id, prince: json[i].value, amount: json[i].amount })
+            }
+        } else {
+            return;
+        }
+        setBasicIndoCoffeOriginal(arrayProductsOriginal)
     }
 
-    function handleAmountCoffeeMinus(id: number) {
-        const amountCoffeeMinus = products.find((product) => product.id == id)
-        if (amountCoffeeMinus.amount > 1) {
-            amountCoffeeMinus.amount--
-            const indexCoffeMinus = products.indexOf(amountCoffeeMinus)
-            setProducts((state) => {
+    function handleAmountPlus(id: number) {
+        const productNewAmountPlus = productsEventsAmount.find(product => product.id == id)
+        const { prince } = basicInfoCoffeOriginal?.find(info => info.id == id)
+        if (productNewAmountPlus) {
+            const indexProductNewAmountPlus = productsEventsAmount.indexOf(productNewAmountPlus)
+            productNewAmountPlus.amount++
+
+            const total = productNewAmountPlus.value + prince
+            
+            productNewAmountPlus.value = parseFloat(total.toFixed(2))
+            setProductsEventsAmount((state) => {
                 const coffes = state.slice(0)
-                coffes.splice(indexCoffeMinus, 1, amountCoffeeMinus)
+                coffes.splice(indexProductNewAmountPlus, 1, productNewAmountPlus)
+                return coffes
+            })
+        }
+        //aumentar a quantidade de cafes selecionados
+    }
+
+    function handleAmountMinus(id: number) {
+        //diminuir a quantidade de cafes selecionados
+        const productNewAmountMinus = productsEventsAmount.find(product => product.id == id)
+        const { prince } = basicInfoCoffeOriginal?.find(info => info.id == id)
+        if (productNewAmountMinus && productNewAmountMinus.amount > 1) {
+            const indexProductNewAmountMinus = productsEventsAmount.indexOf(productNewAmountMinus)
+            productNewAmountMinus.amount--
+
+
+            const total = productNewAmountMinus.value - prince
+            
+            productNewAmountMinus.value = parseFloat(total.toFixed(2))
+
+            setProductsEventsAmount((state) => {
+                const coffes = state.slice(0)
+                coffes.splice(indexProductNewAmountMinus, 1, productNewAmountMinus)
                 return coffes
             })
         }
     }
-    
-    function handleAddCart(index: number) {
-        setAmountProductsCart((state) => state + products[index].amount)
-        setProductsCart((state) => [...state, products[index]])
+
+    function handleAmountPlusPay(id: number){
+        console.log(id)
     }
 
+    function handleAmountMinusPay(id: number){
+        console.log(id)
+    }
+
+    function handleCartProducts(id: number) {
+        //adicionar oshandleAmountMinusPayar do mesmo local onde o handleAmountPlus e handleAmountMinus irão efetuar as mudanças*
+        const { prince } = basicInfoCoffeOriginal?.find(info => info.id == id)
+        const productAddCart = productsEventsAmount.find(product => product.id == id)
+        const productAddCartRepeat = productsCart.find(product => product.id == id)
+        if (!productAddCartRepeat && productAddCart) {
+            setProductsCart((state) => [...state, productAddCart])
+        } else {
+            return;
+            // const total = productAddCartRepeat.amount + productAddCart.amount
+            // productAddCartRepeat.amount = total
+        }
+        const amountInitial = []
+       for(let i = 0; i< productsEventsAmount.length; i++){
+            amountInitial.push({...productsEventsAmount[i], value: prince, amount: 1})
+       }
+    setProductsEventsAmount(amountInitial)
+    }
+
+    function handleRemoveCoffee(id: number) {
+        setProductsCart(productsCart.filter(product => product.id !== id))
+    }
 
     return (
         <ProductsContext.Provider value={{
-            products,
             productsCart,
-            amountProductsCart,
-            handleAmountCoffeePlus,
-            handleAmountCoffeeMinus,
-            handleAddCart,
-            setProducts,
+            productsEventsAmount,
+            handleAmountPlus,
+            handleAmountMinus,
+            handleCartProducts,
+            handleRemoveCoffee,
+            handleAmountPlusPay,
+            handleAmountMinusPay
         }}>
             {children}
         </ProductsContext.Provider>

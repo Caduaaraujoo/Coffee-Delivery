@@ -4,8 +4,14 @@ export interface Coffe {
     title: string,
     name: string,
     description: string,
-    value: string,
     amount: number,
     index: number,
-    id: number
+    id: number,
+    value: number
+}
+
+export interface BasicInfoCoffe {
+    id: number,
+    prince: number,
+    amount: number
 }

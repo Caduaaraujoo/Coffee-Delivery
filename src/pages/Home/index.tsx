@@ -22,16 +22,7 @@ import {
 } from './styles'
 
 export function Home() {
-  const { products, setProducts } = useContext(ProductsContext)
-  useEffect(() => {
-    fetch('http://localhost:3000/produtos')
-      .then((response) => {
-        return response.json()
-      })
-      .then((json) => {
-        setProducts(json)
-      })
-  }, [])
+  const { productsEventsAmount } = useContext(ProductsContext)
 
   return (
     <ContainerHome>
@@ -81,18 +72,18 @@ export function Home() {
       </SectionIntro>
       <SectionProducts>
         <h2 className="text_coffe">Nossos cafés</h2>
-        {products.length > 1 && (
+        {productsEventsAmount.length > 1 && (
           <ContainerCards>
-            {products.map((product: any, index: number) => (
+            {productsEventsAmount.map((product: any, index: number) => (
               <Card
                 key={product.id}
                 title={product.type[0]}
                 name={product.name}
                 description={product.description}
-                value={product.value}
                 amount={product.amount}
                 index={index}
                 id={product.id}
+                value={product.value}
               />
             ))}
           </ContainerCards>
