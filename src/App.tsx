@@ -5,6 +5,7 @@ import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 import { ProductsContextProvider } from './context/ProductsContext'
 import { ImagemContextProvider } from './context/ImagemContext'
+import { FormPayContentProvider } from './context/FormPayContext'
 
 
 export function App() {
@@ -14,7 +15,9 @@ export function App() {
       <BrowserRouter>
         <ImagemContextProvider>
           <ProductsContextProvider>
-            <Router />
+            <FormPayContentProvider>
+              <Router />
+            </FormPayContentProvider>
           </ProductsContextProvider>
         </ImagemContextProvider>
       </BrowserRouter>

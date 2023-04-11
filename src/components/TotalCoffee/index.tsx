@@ -12,7 +12,6 @@ import {
     ValueLine,
     ButtonConfirmProduct
 } from './styles'
-import Americano from '../../assets/Americano.svg'
 import { Minus, Plus, Trash } from 'phosphor-react'
 import {ProductsContext} from '../../context/ProductsContext'
 import {ImagemContext} from '../../context/ImagemContext'
