@@ -17,6 +17,7 @@ import {ProductsContext} from '../../context/ProductsContext'
 import {ImagemContext} from '../../context/ImagemContext'
 import { useContext, useEffect, useState } from 'react'
 import {Coffe} from '../../interfaces/Coffe'
+import {FormaPayContent} from '../../context/FormPayContext'
 
 interface PriceCoffee {
     priceCurrent: number,
@@ -25,16 +26,23 @@ interface PriceCoffee {
     }
 }
 
+
 export function TotalCoffee() {
     const {productsCart, handleAmountPlusPay, handleAmountMinusPay, handleRemoveCoffee} = useContext(ProductsContext)
     const [totalPriceCoffeeCart, setTotalPriceCoffeCart] = useState<number>()
     const [priceDelivery, setPriceDeleviry] = useState<number>(3.50)
     const [totalPricePurchase, setTotalPricePurchase] = useState<number>()
+    const [btnDisabled, setBtnDisabled] = useState(true)
     const {imagens} = useContext(ImagemContext)
     const [imagemCart, setImagemCart] = useState()
 
+    const {formPay} = useContext(FormaPayContent)
+
 
     useEffect(() => {
+        if(productsCart.length > 0){
+            setBtnDisabled(false)
+        }
         const totalProductsCart = productsCart.reduce(function(priceCurrent: PriceCoffee, priceCoffeesAtual: PriceCoffee){
             return priceCurrent + priceCoffeesAtual.value
         }, 0)
@@ -42,6 +50,24 @@ export function TotalCoffee() {
         setTotalPricePurchase(totalPurchase)
         setTotalPriceCoffeCart(totalProductsCart)
     }, [productsCart])
+
+    function handleSubmit(e: any){
+        let emptyField = false
+        e.preventDefault()
+        Object.keys(formPay).forEach((key) => {
+            if(key !== 'complement' && formPay[key] == '' && !emptyField){
+                return emptyField = true
+            } else {
+                return;
+            }
+        })
+
+        if(!emptyField){
+            console.log('compra realizada com sucesso')
+        } else {
+            alert("Todos os campos são obrigatórios")
+        }
+    }
 
     return (
         <Container>
@@ -69,7 +95,7 @@ export function TotalCoffee() {
                         </ContainerCoffeeSelected>
                     ))}
                 </ContainerCoffee>
-                <ContainerCheckoutProducts>
+                <ContainerCheckoutProducts onSubmit={handleSubmit}>
                     <ValueLine>
                         <p>Total de itens</p>
                         <span>R$ {totalPriceCoffeeCart?.toFixed(2)}</span>
@@ -82,7 +108,7 @@ export function TotalCoffee() {
                         <h3>Total</h3>
                         <h3>R$ {totalPricePurchase?.toFixed(2)}</h3>
                     </ValueLine>
-                    <ButtonConfirmProduct><h3>Confirmar Pedido</h3></ButtonConfirmProduct>
+                    <ButtonConfirmProduct disabled={btnDisabled ? true: false}><h3>Confirmar Pedido</h3></ButtonConfirmProduct>
                 </ContainerCheckoutProducts>
             </ContainerRequests>
         </Container>

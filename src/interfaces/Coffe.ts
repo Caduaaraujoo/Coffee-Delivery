@@ -9,7 +9,7 @@ export interface Coffe {
     id: number,
     value: number
     imgId: number
-    img?: HTMLImageElement
+    img?: string
 }
 
 export interface BasicInfoCoffe {

@@ -8,13 +8,14 @@ interface FormPayContentProps {
 
 export function FormPayContentProvider({ children }: FormPayContentProps) {
     const [formPay, setFormPay] = useState({
-        cep: 'lindo',
-        rua: 'teste',
-        numero: '',
-        complemento: '',
-        bairro: 'bonito',
-        cidade: '',
-        uf: ''
+        zipCode: '',
+        road: '',
+        numberHome: '',
+        complement: '',
+        address: '',
+        city: '',
+        uf: '',
+        payment: ''
     })
 
     function handleFormPay(content: any) {

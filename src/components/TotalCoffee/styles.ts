@@ -74,7 +74,7 @@ export const ButtonDeleteCoffee = styled.div`
   background: ${(props) => props.theme.base_button};
   border-radius: 6px;
 `
-export const ContainerCheckoutProducts = styled.div`
+export const ContainerCheckoutProducts = styled.form`
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -92,4 +92,9 @@ export const ButtonConfirmProduct = styled.button`
   border-radius: 6px;
   background-color: ${(props) => props.theme.yellow};
   color: ${(props) => props.theme.white};
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
 `
