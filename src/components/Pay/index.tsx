@@ -8,7 +8,7 @@ export function Pay() {
     const {setFormPay, formPay} = useContext(FormaPayContent)
     function handlePay(e: any){
         if(e.target.name !== undefined){
-            setFormPay({...formPay, FormaPagamento: e.target.name})
+            setFormPay({...formPay, payment: e.target.name})
         } else {
             alert("Forma de pagamento não localizada")
         }

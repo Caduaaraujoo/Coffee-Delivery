@@ -22,42 +22,42 @@ export function Form() {
                 </ContainerSpan>
                 <ContainerInputs>
                     <InputZipCode
-                        name='cep'
+                        name='zipCode'
                         placeholder='CEP'
-                        value={formPay.cep}
+                        value={formPay.zipCode}
                         onChange={(e) => handleOnChange(e)}
                     />
                     <InputRoad
-                        name='rua'
+                        name='road'
                         placeholder='RUA'
-                        value={formPay.rua}
+                        value={formPay.road}
                         onChange={(e) => handleOnChange(e)}
                     />
                     <ContainerInputsRow>
                         <InputNumber
-                            name='numero'
+                            name='numberHome'
                             placeholder='NÚMERO'
-                            value={formPay.numero}
+                            value={formPay.numberHome}
                             onChange={(e) => handleOnChange(e)}
                         />
                         <InputComplement
-                            name='complemento'
+                            name='complement'
                             placeholder='COMPLEMENTO opcional'
-                            value={formPay.complemento}
+                            value={formPay.complement}
                             onChange={(e) => handleOnChange(e)}
                         />
                     </ContainerInputsRow>
                     <ContainerInputsRow>
                         <InputDistrict
-                            name='bairro'
+                            name='address'
                             placeholder='BAIRRO'
-                            value={formPay.bairro}
+                            value={formPay.address}
                             onChange={(e) => handleOnChange(e)}
                         />
                         <InputCity
-                            name='cidade'
+                            name='city'
                             placeholder='CIDADE'
-                            value={formPay.cidade}
+                            value={formPay.city}
                             onChange={(e) => handleOnChange(e)}
                         />
                         <InputUf

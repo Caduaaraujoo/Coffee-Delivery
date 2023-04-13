@@ -1,23 +1,24 @@
 /* eslint-disable prettier/prettier */
+import { Minus, Plus, Trash } from 'phosphor-react'
+import { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { FormaPayContent } from '../../context/FormPayContext'
+import { ImagemContext } from '../../context/ImagemContext'
+import { ProductsContext } from '../../context/ProductsContext'
+import { Coffe } from '../../interfaces/Coffe'
 import {
+    ButtonConfirmProduct,
+    ButtonDeleteCoffee,
+    CoffeeAmount,
     Container,
-    ContainerRequests,
+    ContainerAmountAcions,
+    ContainerCheckoutProducts,
+    ContainerCoffeAmountFunctions,
     ContainerCoffee,
     ContainerCoffeeSelected,
-    CoffeeAmount,
-    ContainerAmountAcions,
-    ContainerCoffeAmountFunctions,
-    ButtonDeleteCoffee,
-    ContainerCheckoutProducts,
-    ValueLine,
-    ButtonConfirmProduct
+    ContainerRequests,
+    ValueLine
 } from './styles'
-import { Minus, Plus, Trash } from 'phosphor-react'
-import {ProductsContext} from '../../context/ProductsContext'
-import {ImagemContext} from '../../context/ImagemContext'
-import { useContext, useEffect, useState } from 'react'
-import {Coffe} from '../../interfaces/Coffe'
-import {FormaPayContent} from '../../context/FormPayContext'
 
 interface PriceCoffee {
     priceCurrent: number,
@@ -35,8 +36,8 @@ export function TotalCoffee() {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const {imagens} = useContext(ImagemContext)
     const [imagemCart, setImagemCart] = useState()
-
     const {formPay} = useContext(FormaPayContent)
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -63,7 +64,7 @@ export function TotalCoffee() {
         })
 
         if(!emptyField){
-            console.log('compra realizada com sucesso')
+            return navigate('/sucess')
         } else {
             alert("Todos os campos são obrigatórios")
         }

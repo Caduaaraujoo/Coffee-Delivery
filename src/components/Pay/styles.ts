@@ -22,7 +22,7 @@ export const ContainerSpan = styled.span`
 export const ContainerPaySelection = styled.div`
   display: flex;
   gap: 12px;
-`
+  `
 export const CardPaySelection = styled.button`
   border: none;
   width: 250px;
@@ -33,4 +33,9 @@ export const CardPaySelection = styled.button`
   gap: 12px;
   background-color: ${(props) => props.theme.base_button};
   border-radius: 6px;
+  cursor: pointer;
+
+  &:focus{
+    background-color: ${(props) => props.theme.purple_light};
+  }
 `
