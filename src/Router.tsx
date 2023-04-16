@@ -3,6 +3,7 @@ import { DefaultLayout } from './layouts/DefaultLayout'
 import { Checkout } from './pages/Checkout'
 import { Home } from './pages/Home'
 import { Sucess } from './pages/Sucess'
+import React from 'react'
 
 export function Router() {
   return (

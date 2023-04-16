@@ -17,4 +17,6 @@ export const defaultTheme = {
   purple: '#8047F8',
   purple_dark: '#4B2995',
   purple_light: '#EBE5F9',
+
+  input_alert: '#FF6D60',
 }

@@ -59,6 +59,10 @@ export const AmountCoffees = styled.div`
   background: #e6e5e5;
   border-radius: 6px;
   margin-right: 8px;
+
+  &:hover{
+    background-color: ${(props) => props.theme.base_hover};
+  }
 `
 
 export const ContainerShoppinhCart = styled.div`
@@ -69,4 +73,27 @@ export const ContainerShoppinhCart = styled.div`
   height: 38px;
   background: #4b2995;
   border-radius: 6px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: ${(props) => props.theme.purple};
+  }
+`
+export const ContainerTypeCoffe = styled.div`
+  display: flex;
+  gap: 4px;
+`
+
+export const TypeCoffe = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  height: 25px;
+  border-radius: 8px;
+  background-color: ${(props) => props.theme.yellow_light};
+  color: ${(props) => props.theme.yellow_dark};
+  font-weight: 700;
+  font-size: 10px;
+
 `

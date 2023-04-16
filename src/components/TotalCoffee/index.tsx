@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -17,8 +16,10 @@ import {
     ContainerCoffee,
     ContainerCoffeeSelected,
     ContainerRequests,
-    ValueLine
+    ValueLine, 
+    AlertContainer
 } from './styles'
+import React from 'react'
 
 interface PriceCoffee {
     priceCurrent: number,
@@ -36,8 +37,10 @@ export function TotalCoffee() {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const {imagens} = useContext(ImagemContext)
     const [imagemCart, setImagemCart] = useState()
-    const {formPay} = useContext(FormaPayContent)
+    const {formPay, setInputEmpty} = useContext(FormaPayContent)
     const navigate = useNavigate()
+    const [timerAlert, setTimerAlert] = useState(false)
+ 
 
 
     useEffect(() => {
@@ -56,7 +59,7 @@ export function TotalCoffee() {
         let emptyField = false
         e.preventDefault()
         Object.keys(formPay).forEach((key) => {
-            if(key !== 'complement' && formPay[key] == '' && !emptyField){
+            if(key !== 'complement' && formPay[key] == '' ){
                 return emptyField = true
             } else {
                 return;
@@ -66,7 +69,11 @@ export function TotalCoffee() {
         if(!emptyField){
             return navigate('/sucess')
         } else {
-            alert("Todos os campos são obrigatórios")
+            setInputEmpty(formPay)
+            setTimerAlert(true)
+               setTimeout(() => {
+                 return setTimerAlert(false)
+               }, 3000);
         }
     }
 
@@ -82,7 +89,7 @@ export function TotalCoffee() {
                                 <p>{product.name}</p>
                                 <ContainerAmountAcions>
                                     <ContainerCoffeAmountFunctions>
-                                        <Minus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountMinusPay(product.id)}/>
+                                        <Minus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountMinusPay(product.id)} cursor="pointer"/>
                                         <span>{product.amount}</span>
                                         <Plus size={14} weight="bold" color='#8047F8' onClick={() => handleAmountPlusPay(product.id)}/>
                                     </ContainerCoffeAmountFunctions>
@@ -112,6 +119,9 @@ export function TotalCoffee() {
                     <ButtonConfirmProduct disabled={btnDisabled ? true: false}><h3>Confirmar Pedido</h3></ButtonConfirmProduct>
                 </ContainerCheckoutProducts>
             </ContainerRequests>
+            {timerAlert &&
+                <AlertContainer><p>Os campos em vermelho são obrigatórios</p></AlertContainer>
+            }
         </Container>
     )
 }

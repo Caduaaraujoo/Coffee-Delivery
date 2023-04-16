@@ -13,6 +13,10 @@ export const ContainerPayment = styled.div`
   p {
     font-size: 16px;
   }
+
+  &.inputAlert {
+    border: 1px solid ${(props) => props.theme.input_alert};
+  }
 `
 export const ContainerSpan = styled.span`
   display: flex;
@@ -22,6 +26,7 @@ export const ContainerSpan = styled.span`
 export const ContainerPaySelection = styled.div`
   display: flex;
   gap: 12px;
+
   `
 export const CardPaySelection = styled.button`
   border: none;
@@ -33,9 +38,17 @@ export const CardPaySelection = styled.button`
   gap: 12px;
   background-color: ${(props) => props.theme.base_button};
   border-radius: 6px;
-  cursor: pointer;
+
+  &:hover{
+    background-color: ${(props) => props.theme.base_hover};
+  }
 
   &:focus{
     background-color: ${(props) => props.theme.purple_light};
+    border: 1px solid ${(props) => props.theme.purple};
+  }
+
+  &.paymentSelected{
+    border: 1px solid ${(props) => props.theme.purple};
   }
 `

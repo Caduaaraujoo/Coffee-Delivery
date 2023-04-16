@@ -39,5 +39,9 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 14px;
         line-height: 130%;
     }
+    
+    button {
+        cursor: pointer !important;;
+    }
  }
 `

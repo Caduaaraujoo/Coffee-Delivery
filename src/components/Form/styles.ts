@@ -33,6 +33,14 @@ const InputBase = styled.input`
   &::placeholder {
     color: ${(props) => props.theme.base_label};
   }
+
+  &:focus{
+    border-color: ${(props) =>props.theme.yellow_dark};
+  }
+
+  &.inputAlert {
+    border-color: ${(props) => props.theme.input_alert};
+  }
 `
 
 export const ContainerInputs = styled.div`

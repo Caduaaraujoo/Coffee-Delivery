@@ -29,6 +29,7 @@ export const Location = styled.div`
 `
 
 export const Cart = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,4 +38,20 @@ export const Cart = styled.div`
   background-color: ${(props) => props.theme.yellow_light};
   color: ${(props) => props.theme.yellow_dark};
   border-radius: 6px;
+`
+
+export const AmountCoffee = styled.span`
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: white;
+  background-color: ${(props) => props.theme.yellow_dark};
+  font-weight: 700;
+  font-size: 12px;
 `

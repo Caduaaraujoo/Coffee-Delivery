@@ -62,8 +62,11 @@ export const ContainerCoffeAmountFunctions = styled.div`
   height: 32px;
   background: ${(props) => props.theme.base_button};
   border-radius: 6px;
+  &:hover{
+    background-color: ${(props) => props.theme.base_hover};
+  }
 `
-export const ButtonDeleteCoffee = styled.div`
+export const ButtonDeleteCoffee = styled.button`
   all: unset;
   display: flex;
   align-items: center;
@@ -73,6 +76,10 @@ export const ButtonDeleteCoffee = styled.div`
   height: 32px;
   background: ${(props) => props.theme.base_button};
   border-radius: 6px;
+
+  &:hover{
+    background-color: ${(props) => props.theme.base_hover};
+  }
 `
 export const ContainerCheckoutProducts = styled.form`
   margin-top: 1.5rem;
@@ -92,9 +99,30 @@ export const ButtonConfirmProduct = styled.button`
   border-radius: 6px;
   background-color: ${(props) => props.theme.yellow};
   color: ${(props) => props.theme.white};
-  cursor: pointer;
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+  
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed !important;
+    }
+
+  &:hover{
+    background-color: ${(props) => props.theme.yellow_dark};
+  };
+`
+
+export const AlertContainer = styled.span` 
+  position: absolute;
+  top: 30px;
+  right: 150px;
+  height: 40px;
+  width: 350px;
+  padding: 10px;
+  background-color: ${(props) => props.theme.input_alert};
+  border-radius: 10px;
+  
+  p{
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
   }
 `

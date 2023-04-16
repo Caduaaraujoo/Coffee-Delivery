@@ -1,9 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-expressions */
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
-
 import { Coffe } from '../../interfaces/Coffe'
 import {
   AmountCoffees,
@@ -12,9 +8,13 @@ import {
   ContainerCard,
   ContainerShoppinhCart,
   ImgCoffee,
+  TypeCoffe,
+  ContainerTypeCoffe
 } from './styles'
 import {ProductsContext} from '../../context/ProductsContext'
 import {ImagemContext} from '../../context/ImagemContext'
+import React from 'react'
+
 
 export function Card({
   title,
@@ -35,14 +35,15 @@ export function Card({
     setImg(imgCoffee.imagem.type)
   }, [])
 
-
-
-
   return (
     <ContainerCard>
       <ImgCoffee src={img} alt="" />
       <CardInfo>
-        <span>{title}</span>
+        <ContainerTypeCoffe>
+        {title.map((title: string, index: number) => (
+            <TypeCoffe key={index}>{title.toUpperCase()}</TypeCoffe>
+            ))}
+        </ContainerTypeCoffe>
         <h2>{name}</h2>
         <p>{description}</p>
         <Buy>

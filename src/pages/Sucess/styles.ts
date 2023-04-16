@@ -36,3 +36,36 @@ export const ImgDelivery = styled.img`
     width: 492px;
     height: 293px;
 `
+export const ContainerLineInfo = styled.div`
+    display: flex;
+    align-items: center;
+    width: 354px;
+    height: 42px;
+    gap: 12px;
+`
+
+const CircleContainerIcon = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+`
+
+export const CircleContainerIconAdress = styled(CircleContainerIcon)`
+    background-color: ${(props) => props.theme.purple};
+`
+
+export const CircleContainerIconTimer = styled(CircleContainerIcon)`
+    background-color: ${(props) => props.theme.yellow};
+`
+
+export const CircleContainerIconPayment = styled(CircleContainerIcon)`
+    background-color: ${(props) => props.theme.yellow_dark};
+`
+
+export const LineCollum = styled.div`
+    display: flex;
+    flex-direction: column;
+`

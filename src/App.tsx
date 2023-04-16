@@ -6,6 +6,7 @@ import { GlobalStyle } from './styles/global'
 import { ProductsContextProvider } from './context/ProductsContext'
 import { ImagemContextProvider } from './context/ImagemContext'
 import { FormPayContentProvider } from './context/FormPayContext'
+import React from 'react'
 
 
 export function App() {

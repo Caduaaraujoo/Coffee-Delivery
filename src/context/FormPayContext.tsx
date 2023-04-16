@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from 'react'
+import React from 'react'
 
 export const FormaPayContent = createContext({} as any)
 
@@ -7,6 +8,7 @@ interface FormPayContentProps {
 }
 
 export function FormPayContentProvider({ children }: FormPayContentProps) {
+    const [inputEmpty, setInputEmpty] = useState([])
     const [formPay, setFormPay] = useState({
         zipCode: '',
         road: '',
@@ -28,9 +30,11 @@ export function FormPayContentProvider({ children }: FormPayContentProps) {
     return (
         <FormaPayContent.Provider
             value={{
+                inputEmpty,
                 formPay,
                 setFormPay,
-                handleFormPay
+                handleFormPay,
+                setInputEmpty
             }}
         >
             {children}

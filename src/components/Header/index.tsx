@@ -1,9 +1,10 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import Logo from '../../assets/Logo.svg'
-import { ActionsContainer, Cart, Location, NavBarContainer } from './styles'
+import { ActionsContainer, Cart, Location, NavBarContainer, AmountCoffee } from './styles'
 import { useContext, useEffect, useState } from 'react'
 import {ProductsContext} from '../../context/ProductsContext'
+import React from 'react'
 
 export function Header() {
   const [amountCoffeCart, setAmountCoffeCart] = useState<number>(0)
@@ -32,9 +33,9 @@ export function Header() {
         </Location>
         <Cart>
           <NavLink to="/checkout" title='Checkout'>
-            <ShoppingCart weight="fill" size={22} />
+            <ShoppingCart weight="fill" size={22} color='#C47F17'/>
           </NavLink>
-          {amountCoffeCart >=1 && <span>{amountCoffeCart}</span>}
+          {amountCoffeCart >=1 && <AmountCoffee>{amountCoffeCart}</AmountCoffee>}
         </Cart>
       </ActionsContainer>
     </NavBarContainer>

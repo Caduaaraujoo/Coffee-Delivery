@@ -1,8 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable eqeqeq */
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
-import ImgCapa from '../../assets/Imagem.svg'
+import ImgCapa from "../../assets/Imagem.svg"
 import { Card } from '../../components/Card'
 import { ProductsContext } from '../../context/ProductsContext'
 import {
@@ -20,6 +18,7 @@ import {
   SectionIntro,
   SectionProducts,
 } from './styles'
+import React from 'react'
 
 export function Home() {
   const { productsEventsAmount } = useContext(ProductsContext)
@@ -77,7 +76,7 @@ export function Home() {
             {productsEventsAmount.map((product: any, index: number) => (
               <Card
                 key={product.id}
-                title={product.type[0]}
+                title={product.type}
                 name={product.name}
                 description={product.description}
                 amount={product.amount}
