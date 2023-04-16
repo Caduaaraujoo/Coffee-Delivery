@@ -15,7 +15,7 @@ export const ActionsContainer = styled.div`
   gap: 0.75rem;
 `
 
-export const Location = styled.div`
+export const Location = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,8 +47,8 @@ export const AmountCoffee = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 1.2rem;
+  height: 1.2rem;
   border-radius: 50%;
   color: white;
   background-color: ${(props) => props.theme.yellow_dark};

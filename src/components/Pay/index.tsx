@@ -1,11 +1,10 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
-import { ContainerPayment, ContainerSpan, ContainerPaySelection, CardPaySelection } from './styles'
-import {FormaPayContent} from '../../context/FormPayContext'
-import { useContext, useEffect } from 'react'
-import React from 'react'
+import { useContext } from 'react'
+import { FormPayContent } from '../../context/FormPayContext'
+import { CardPaySelection, ContainerInfoPayment, ContainerPayment, SectionPaymentSelected } from './styles'
 
 export function Pay() {
-    const {setFormPay, formPay, inputEmpty} = useContext(FormaPayContent)
+    const {setFormPay, formPay, inputEmpty} = useContext(FormPayContent)
     function handlePay(e: any){
         if(e.target.name !== undefined){
             setFormPay({...formPay, payment: e.target.name})
@@ -16,14 +15,14 @@ export function Pay() {
 
     return (
         <ContainerPayment className={inputEmpty.payment == "" ? "inputAlert" : ""}>
-            <ContainerSpan>
+            <ContainerInfoPayment>
                 <CurrencyDollar size={32} color='#8047F8' />
-                <div>
+                <section>
                     <h3>Pagamento</h3>
                     <p>O pagamento é feito na entrega. Escolha a forma que desejar pagar.</p>
-                </div>
-            </ContainerSpan>
-            <ContainerPaySelection >
+                </section>
+            </ContainerInfoPayment>
+            <SectionPaymentSelected >
                 <CardPaySelection name='credito'onClick={(e) => handlePay(e)} className={inputEmpty.payment == "credito" ? "paymentSelected" : ""}>
                     <CreditCard size={22} color='#8047F8' />
                     <p>CARTÃO DE CRÉDITO</p>
@@ -36,7 +35,7 @@ export function Pay() {
                     <Money size={22} color='#8047F8' />
                     <p>DINHEIRO</p>
                 </CardPaySelection>
-            </ContainerPaySelection>
+            </SectionPaymentSelected>
         </ContainerPayment>
     )
 }

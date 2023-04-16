@@ -1,8 +1,7 @@
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FormaPayContent } from '../../context/FormPayContext'
-import { ImagemContext } from '../../context/ImagemContext'
+import { FormPayContent } from '../../context/FormPayContext'
 import { ProductsContext } from '../../context/ProductsContext'
 import { Coffe } from '../../interfaces/Coffe'
 import {
@@ -19,7 +18,7 @@ import {
     ValueLine, 
     AlertContainer
 } from './styles'
-import React from 'react'
+
 
 interface PriceCoffee {
     priceCurrent: number,
@@ -35,9 +34,7 @@ export function TotalCoffee() {
     const [priceDelivery, setPriceDeleviry] = useState<number>(3.50)
     const [totalPricePurchase, setTotalPricePurchase] = useState<number>()
     const [btnDisabled, setBtnDisabled] = useState(true)
-    const {imagens} = useContext(ImagemContext)
-    const [imagemCart, setImagemCart] = useState()
-    const {formPay, setInputEmpty} = useContext(FormaPayContent)
+    const {formPay, setInputEmpty} = useContext(FormPayContent)
     const navigate = useNavigate()
     const [timerAlert, setTimerAlert] = useState(false)
  

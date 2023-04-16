@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from 'react'
 import React from 'react'
 
-export const FormaPayContent = createContext({} as any)
+export const FormPayContent = createContext({} as any)
 
 interface FormPayContentProps {
     children: ReactNode
@@ -28,7 +28,7 @@ export function FormPayContentProvider({ children }: FormPayContentProps) {
 
 
     return (
-        <FormaPayContent.Provider
+        <FormPayContent.Provider
             value={{
                 inputEmpty,
                 formPay,
@@ -38,6 +38,6 @@ export function FormPayContentProvider({ children }: FormPayContentProps) {
             }}
         >
             {children}
-        </FormaPayContent.Provider>
+        </FormPayContent.Provider>
     )
 }

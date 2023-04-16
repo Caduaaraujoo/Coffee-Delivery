@@ -1,17 +1,17 @@
 import {ContainerDelivery, ContainerSucess, BoxDelivery, ImgDelivery, ContainerInfoDelivery, CircleContainerIconAdress, CircleContainerIconTimer, CircleContainerIconPayment, ContainerLineInfo, LineCollum} from './styles'
 import Delivery from '../../assets/delivery.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import {FormaPayContent} from '../../context/FormPayContext'
+import {FormPayContent} from '../../context/FormPayContext'
 import { useContext } from 'react'
 
 export function Sucess() {
-  const {formPay} = useContext(FormaPayContent)
+  const {formPay} = useContext(FormPayContent)
 
   return (
     <ContainerSucess>
       <ContainerDelivery>
         <h1>Uhu! Pedido confirmado</h1>
-        <p>Agora é só aguardar que logo o café chegará até você</p>
+        <h4>Agora é só aguardar que logo o café chegará até você</h4>
         <BoxDelivery>
           <ContainerInfoDelivery>
             <ContainerLineInfo>

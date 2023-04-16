@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -18,16 +18,22 @@ export const ContainerForms = styled.div`
   padding: 3rem;
 `
 
-export const ContainerSpan = styled.span`
+export const HeaderForm = styled.header`
   display: flex;
   gap: 3px;
 `
+export const ContainerInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
 
 const InputBase = styled.input`
+  all: unset;
   border: 1px solid ${(props) => props.theme.base_button};
   height: 2.5rem;
   border-radius: 8px;
-  padding: 10px;
+  padding: 0.5rem;
   background-color: ${(props) => props.theme.base_button};
 
   &::placeholder {
@@ -41,12 +47,6 @@ const InputBase = styled.input`
   &.inputAlert {
     border-color: ${(props) => props.theme.input_alert};
   }
-`
-
-export const ContainerInputs = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 `
 
 export const ContainerInputsRow = styled.div`

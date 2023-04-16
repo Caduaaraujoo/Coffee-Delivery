@@ -1,19 +1,19 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
 `
 
-export const ContainerRequests = styled.div`
+export const ContainerRequests = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 40px;
+  padding: 2.4rem;
   width: 33rem;
   height: 36rem;
-  border-radius: 6px 44px;
+  border-radius: 6px 2.7rem;
   background-color: ${(props) => props.theme.base_card};
 `
 export const ContainerCoffee = styled.div`
@@ -23,17 +23,17 @@ export const ContainerCoffee = styled.div`
   overflow: auto;
 `
 
-export const ContainerCoffeeSelected = styled.div`
-  width: 368px;
-  height: 80px;
+export const ContainerCoffeeSelected = styled.article`
+  width: 22.3rem;
+  height: 4.9rem;
   display: flex;
   justify-content: space-between;
   align-content: center;
   border-bottom: 1px solid ${(props) => props.theme.base_button};
 
   img {
-    width: 64px;
-    height: 64px;
+    width: 3.9rem;
+    height: 3.9rem;
   }
 
   p {
@@ -52,14 +52,14 @@ export const ContainerAmountAcions = styled.div`
   gap: 5px;
 `
 
-export const ContainerCoffeAmountFunctions = styled.div`
+export const ContainerCoffeAmountFunctions = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 8px;
   justify-content: space-between;
-  width: 72px;
-  height: 32px;
+  width: 4.3rem;
+  height: 2rem;
   background: ${(props) => props.theme.base_button};
   border-radius: 6px;
   &:hover{
@@ -72,8 +72,8 @@ export const ButtonDeleteCoffee = styled.button`
   align-items: center;
   justify-content: center;
   gap: 4px;
-  width: 100px;
-  height: 32px;
+  width: 6rem;
+  height: 2rem;
   background: ${(props) => props.theme.base_button};
   border-radius: 6px;
 
@@ -95,7 +95,7 @@ export const ValueLine = styled.div`
 export const ButtonConfirmProduct = styled.button`
   all: unset;
   text-align: center;
-  height: 46px;
+  height: 2.8rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme.yellow};
   color: ${(props) => props.theme.white};
@@ -112,10 +112,10 @@ export const ButtonConfirmProduct = styled.button`
 
 export const AlertContainer = styled.span` 
   position: absolute;
-  top: 30px;
-  right: 150px;
-  height: 40px;
-  width: 350px;
+  top: 1.8rem;
+  right: 9.1rem;
+  height: 2.4rem;
+  width: 21.21rem;
   padding: 10px;
   background-color: ${(props) => props.theme.input_alert};
   border-radius: 10px;

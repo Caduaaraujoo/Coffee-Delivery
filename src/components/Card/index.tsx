@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Coffe } from '../../interfaces/Coffe'
 import {
   AmountCoffees,
-  Buy,
+  SectionFunctionsAmountCoffee,
   CardInfo,
   ContainerCard,
   ContainerShoppinhCart,
@@ -13,8 +13,6 @@ import {
 } from './styles'
 import {ProductsContext} from '../../context/ProductsContext'
 import {ImagemContext} from '../../context/ImagemContext'
-import React from 'react'
-
 
 export function Card({
   title,
@@ -46,8 +44,8 @@ export function Card({
         </ContainerTypeCoffe>
         <h2>{name}</h2>
         <p>{description}</p>
-        <Buy>
-          <span className="buy_value">R${value}</span>
+        <SectionFunctionsAmountCoffee>
+          <h1 className="buy_value">R${value}</h1>
           <AmountCoffees>
             <Minus
               size={14}
@@ -69,7 +67,7 @@ export function Card({
               onClick={() => handleCartProducts(id)}
             />
           </ContainerShoppinhCart>
-        </Buy>
+        </SectionFunctionsAmountCoffee>
       </CardInfo>
     </ContainerCard>
   )
