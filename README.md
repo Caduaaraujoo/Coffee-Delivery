@@ -8,8 +8,8 @@ Por tanto o layout dessa aplicação foi totalmente desenvolvido por eles.
 <h1> 
     <img src="./public/home.png"/>
     <div > 
-        <img src="./public/homeCoffes.png" width="300px"/>
-        <img src="./public/pagamento.png" width="300px"/>
+        <img src="./public/homeCoffes.png" width="500px"/>
+        <img src="./public/pagamento.png" width="500px"/>
     </div>
     <img src="./public/pageSucess.png" />
 </h1>
