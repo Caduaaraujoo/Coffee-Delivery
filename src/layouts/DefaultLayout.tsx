@@ -4,9 +4,9 @@ import React from 'react'
 
 export function DefaultLayout() {
   return (
-    <>
+    <header>
       <Header />
       <Outlet />
-    </>
+    </header>
   )
 }

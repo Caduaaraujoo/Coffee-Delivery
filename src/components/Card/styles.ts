@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ContainerCard = styled.div`
+export const ContainerCard = styled.article`
   position: relative;
 `
 
@@ -11,7 +11,7 @@ export const ImgCoffee = styled.img`
   margin-top: -20px;
 `
 
-export const CardInfo = styled.div`
+export const CardInfo = styled.article`
   width: 256px;
   height: 310px;
   display: flex;
@@ -26,30 +26,43 @@ export const CardInfo = styled.div`
   }
 
   p {
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 130%;
     text-align: center;
     color: ${(props) => props.theme.base_label};
     margin-bottom: 32px;
   }
 
   .buy_value {
-    font-family: 'Baloo 2';
-    font-style: normal;
-    font-weight: 800;
     font-size: 24px;
     line-height: 130%;
     margin-right: 23px;
   }
 `
 
-export const Buy = styled.div`
+export const ContainerTypeCoffe = styled.section`
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+`
+
+export const TypeCoffe = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.5rem;
+  height: 1.8rem;
+  border-radius: 8px;
+  background-color: ${(props) => props.theme.yellow_light};
+  color: ${(props) => props.theme.yellow_dark};
+  font-weight: 700;
+  font-size: 10px;
+
+`
+
+export const SectionFunctionsAmountCoffee = styled.section`
   display: flex;
 `
 
-export const AmountCoffees = styled.div`
+export const AmountCoffees = styled.section`
   display: flex;
   padding: 8px;
   justify-content: space-between;
@@ -65,12 +78,12 @@ export const AmountCoffees = styled.div`
   }
 `
 
-export const ContainerShoppinhCart = styled.div`
+export const ContainerShoppinhCart = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 2.5rem;
+  height: 2.5rem;
   background: #4b2995;
   border-radius: 6px;
   cursor: pointer;
@@ -78,22 +91,4 @@ export const ContainerShoppinhCart = styled.div`
   &:hover{
     background-color: ${(props) => props.theme.purple};
   }
-`
-export const ContainerTypeCoffe = styled.div`
-  display: flex;
-  gap: 4px;
-`
-
-export const TypeCoffe = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 90px;
-  height: 25px;
-  border-radius: 8px;
-  background-color: ${(props) => props.theme.yellow_light};
-  color: ${(props) => props.theme.yellow_dark};
-  font-weight: 700;
-  font-size: 10px;
-
 `

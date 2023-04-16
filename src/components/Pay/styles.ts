@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const ContainerPayment = styled.div`
+export const ContainerPayment = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  padding: 50px;
+  gap: 2.4rem;
+  padding: 3rem;
   width: 58rem;
   height: 17.5rem;
   background-color: ${(props) => props.theme.base_card};
@@ -18,22 +18,22 @@ export const ContainerPayment = styled.div`
     border: 1px solid ${(props) => props.theme.input_alert};
   }
 `
-export const ContainerSpan = styled.span`
+export const ContainerInfoPayment = styled.div`
   display: flex;
   gap: 3px;
 `
 
-export const ContainerPaySelection = styled.div`
+export const SectionPaymentSelected = styled.section`
   display: flex;
   gap: 12px;
 
   `
 export const CardPaySelection = styled.button`
   border: none;
-  width: 250px;
-  height: 70px;
+  width: 16rem;
+  height: 4.2rem;
   display: flex;
-  padding: 0 16px;
+  padding: 0 1rem;
   align-items: center;
   gap: 12px;
   background-color: ${(props) => props.theme.base_button};

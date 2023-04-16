@@ -1,12 +1,10 @@
 import { MapPinLine } from 'phosphor-react'
-import { Container, ContainerForms, ContainerInputs, ContainerInputsRow, ContainerSpan, InputCity, InputComplement, InputDistrict, InputNumber, InputRoad, InputUf, InputZipCode } from './styles'
-import { FormaPayContent } from '../../context/FormPayContext'
-import { useContext, useEffect, useState } from 'react'
-import React from 'react'
+import { useContext } from 'react'
+import { FormPayContent } from '../../context/FormPayContext'
+import { Container, ContainerForms, ContainerInputs, ContainerInputsRow, HeaderForm, InputCity, InputComplement, InputDistrict, InputNumber, InputRoad, InputUf, InputZipCode } from './styles'
 
 export function Form() {
-    const { formPay, setFormPay, inputEmpty } = useContext(FormaPayContent)
-
+    const { formPay, setFormPay, inputEmpty } = useContext(FormPayContent)
 
     function handleOnChange(e: any) {
         setFormPay({ ...formPay, [e.target.name]: e.target.value })
@@ -16,13 +14,13 @@ export function Form() {
         <Container>
             <h2>Complete seu pedido</h2>
             <ContainerForms>
-                <ContainerSpan>
+                <HeaderForm>
                     <MapPinLine size={22} color="#C47F17" />
-                    <div>
+                    <section>
                         <h3>Endereço de Entrega</h3>
                         <p>Informe o endereço onde deseja receber seu pedido</p>
-                    </div>
-                </ContainerSpan>
+                    </section>
+                </HeaderForm>
                 <ContainerInputs>
                     <InputZipCode
                         className={inputEmpty.zipCode == "" ? 'inputAlert' : ""}

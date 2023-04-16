@@ -1,10 +1,9 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Logo from '../../assets/Logo.svg'
-import { ActionsContainer, Cart, Location, NavBarContainer, AmountCoffee } from './styles'
-import { useContext, useEffect, useState } from 'react'
-import {ProductsContext} from '../../context/ProductsContext'
-import React from 'react'
+import { ProductsContext } from '../../context/ProductsContext'
+import { ActionsContainer, AmountCoffee, Cart, Location, NavBarContainer } from './styles'
 
 export function Header() {
   const [amountCoffeCart, setAmountCoffeCart] = useState<number>(0)

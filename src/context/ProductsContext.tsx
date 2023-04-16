@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import {ImagemContext} from './ImagemContext'
 
@@ -28,7 +28,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             })
     }, [])
 
-    function handleTratamentJson(json: any) {handleCartProducts
+    function handleTratamentJson(json: any) {
         const repeatArray = arrayProductsOriginal.find(array => array.id == json[0].id)
 
         if (!repeatArray) {
@@ -57,11 +57,9 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
                 return coffes
             })
         }
-        //aumentar a quantidade de cafes selecionados
     }
 
     function handleAmountMinus(id: number) {
-        //diminuir a quantidade de cafes selecionados
         const productNewAmountMinus = productsEventsAmount.find(product => product.id == id)
         const { price } = basicInfoCoffeOriginal?.find(info => info.id == id)
         if (productNewAmountMinus && productNewAmountMinus.amount > 1) {
@@ -85,7 +83,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         const productNewAmountPlus = productsCart.find(product => product.id == id)
         const { price } = basicInfoCoffeOriginal?.find(info => info.id == id)
         if (productNewAmountPlus) {
-            const indexProductNewAmountPlus = productsEventsAmount.indexOf(productNewAmountPlus)
+            const indexProductNewAmountPlus = productsCart.indexOf(productNewAmountPlus)
             productNewAmountPlus.amount++
 
             const total = productNewAmountPlus.value + price

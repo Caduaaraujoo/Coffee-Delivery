@@ -1,5 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import ImgCapa from "../../assets/Imagem.svg"
 import { Card } from '../../components/Card'
 import { ProductsContext } from '../../context/ProductsContext'
@@ -18,7 +18,6 @@ import {
   SectionIntro,
   SectionProducts,
 } from './styles'
-import React from 'react'
 
 export function Home() {
   const { productsEventsAmount } = useContext(ProductsContext)

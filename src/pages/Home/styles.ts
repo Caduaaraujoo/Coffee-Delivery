@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const ContainerHome = styled.div`
+export const ContainerHome = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 32.9rem;
-  padding: 100px 160px;
+  padding: 6rem 9.7rem;
   background: rgb(251, 233, 255);
   background: radial-gradient(
     circle,
@@ -25,32 +25,27 @@ export const PresentationCoffe = styled.section`
   gap: 4rem;
 `
 
-export const Infos = styled.div`
-  width: 35.6rem;
-  height: 11.6rem;
+export const Infos = styled.header`
   p {
-    font-family: 'Roboto';
-    font-weight: 400;
     font-size: 20px;
-    line-height: 130%;
     overflow-wrap: break-word;
     color: ${(props) => props.theme.base_subtitle};
   }
 `
-export const ContainerBenefits = styled.div`
+export const ContainerBenefits = styled.section`
   display: flex;
   gap: 1.2rem;
   width: 34.3rem;
   height: 5rem;
 `
 
-export const Benefits = styled.div`
+export const Benefits = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
 `
 
-export const BenefitLine = styled.div`
+export const BenefitLine = styled.section`
   min-width: 8rem;
   display: flex;
   align-items: center;
@@ -86,15 +81,15 @@ export const SectionProducts = styled.section`
   justify-content: center;
 
   .text_coffe {
-    margin: 32px 0 54px 0;
+    margin: 2rem 0 3.2rem 0;
   }
 `
 
-export const ContainerCards = styled.div`
+export const ContainerCards = styled.section`
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
   width: 100%;
   gap: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 2.4rem;
 `
