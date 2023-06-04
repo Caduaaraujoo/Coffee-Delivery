@@ -18,11 +18,18 @@ export const SectionIntro = styled.section`
   display: flex;
   gap: 3.3rem;
   margin-bottom: 3rem;
+  
+  img {
+  @media(max-width: 980px){
+     display: none;
+  }
+}
 `
 export const PresentationCoffe = styled.section`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+
 `
 
 export const Infos = styled.header`

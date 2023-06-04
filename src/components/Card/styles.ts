@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const ContainerCard = styled.article`
   position: relative;
+  
 `
 
 export const ImgCoffee = styled.img`

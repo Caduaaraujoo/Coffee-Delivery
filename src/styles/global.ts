@@ -1,12 +1,13 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
- *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    body{
+     body{
         background-color: ${(props) => props.theme.background};
     }
 
@@ -41,7 +42,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     button {
-        cursor: pointer !important;;
+        cursor: pointer !important;
     }
- }
+
 `

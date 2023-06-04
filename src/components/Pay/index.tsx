@@ -4,10 +4,10 @@ import { FormPayContent } from '../../context/FormPayContext'
 import { CardPaySelection, ContainerInfoPayment, ContainerPayment, SectionPaymentSelected } from './styles'
 
 export function Pay() {
-    const {setFormPay, formPay, inputEmpty} = useContext(FormPayContent)
-    function handlePay(e: any){
-        if(e.target.name !== undefined){
-            setFormPay({...formPay, payment: e.target.name})
+    const { setFormPay, formPay, inputEmpty } = useContext(FormPayContent)
+    function handlePay(e: any) {
+        if (e.target.id !== undefined) {
+            setFormPay({ ...formPay, payment: e.target.id })
         } else {
             alert("Forma de pagamento não localizada")
         }
@@ -23,17 +23,17 @@ export function Pay() {
                 </section>
             </ContainerInfoPayment>
             <SectionPaymentSelected >
-                <CardPaySelection name='credito'onClick={(e) => handlePay(e)} className={inputEmpty.payment == "credito" ? "paymentSelected" : ""}>
-                    <CreditCard size={22} color='#8047F8' />
-                    <p>CARTÃO DE CRÉDITO</p>
+                <CardPaySelection id='credito' onClick={(e) => handlePay(e)} className={inputEmpty.payment == "credito" ? "paymentSelected" : ""}>
+                    <CreditCard size={22} color='#8047F8' id='credito' />
+                    CARTÃO DE CRÉDITO
                 </CardPaySelection>
-                <CardPaySelection name='debito' onClick={(e) => handlePay(e)} className={inputEmpty.payment == "debito" ? "paymentSelected" : ""}>
-                    <Bank size={22} color='#8047F8' />
-                    <p>CARTÃO DE DÉBITO</p>
+                <CardPaySelection id='debito' onClick={(e) => handlePay(e)} className={inputEmpty.payment == "debito" ? "paymentSelected" : ""}>
+                    <Bank size={22} color='#8047F8' id='debito' />
+                    CARTÃO DE DÉBITO
                 </CardPaySelection>
-                <CardPaySelection name='dinheiro' onClick={(e) => handlePay(e)} className={inputEmpty.payment == "dinheiro" ? "paymentSelected" : ""}>
-                    <Money size={22} color='#8047F8' />
-                    <p>DINHEIRO</p>
+                <CardPaySelection id='dinheiro' onClick={(e) => handlePay(e)} className={inputEmpty.payment == "dinheiro" ? "paymentSelected" : ""}>
+                    <Money size={22} color='#8047F8' id='dinheiro' />
+                    DINHEIRO
                 </CardPaySelection>
             </SectionPaymentSelected>
         </ContainerPayment>

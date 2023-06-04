@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { useContext } from 'react'
-import ImgCapa from "../../assets/Imagem.svg"
+import ImgCover from "../../assets/Imagem.svg"
 import { Card } from '../../components/Card'
 import { ProductsContext } from '../../context/ProductsContext'
 import {
@@ -64,8 +64,8 @@ export function Home() {
             </Benefits>
           </ContainerBenefits>
         </PresentationCoffe>
-        <div>
-          <img src={ImgCapa} alt="" />
+        <div >
+          <img src={ImgCover} alt="" />
         </div>
       </SectionIntro>
       <SectionProducts>

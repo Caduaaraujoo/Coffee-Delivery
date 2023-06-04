@@ -20,20 +20,12 @@ export function FormPayContentProvider({ children }: FormPayContentProps) {
         payment: ''
     })
 
-    function handleFormPay(content: any) {
-        console.log(content)
-    }
-
-
-
-
     return (
         <FormPayContent.Provider
             value={{
                 inputEmpty,
                 formPay,
                 setFormPay,
-                handleFormPay,
                 setInputEmpty
             }}
         >
